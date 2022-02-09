@@ -12,20 +12,12 @@ class ViewController: UITabBarController, UIPageViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         pageViewController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pageViewController.delegate = self
         addChild(pageViewController)
-//        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
-//
-//        NSLayoutConstraint.activate([
-//            pageViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-//            pageViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-//            pageViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-//            pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10)
-//        ])
+
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .lightGray

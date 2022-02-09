@@ -10,8 +10,18 @@ import UIKit
 class CartoonCardViewController: UIViewController {
     var imageView: UIImageView!
     var label: UILabel!
+    var cartoon: Cartoon
     var infoLabels: [UILabel] = []
     var contentLabels: [UILabel] = []
+    
+    init(for cartoon: Cartoon) {
+        self.cartoon = cartoon
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         var constraints: [NSLayoutConstraint] = []
@@ -24,7 +34,9 @@ class CartoonCardViewController: UIViewController {
         view.backgroundColor = .white
         
         imageView = UIImageView()
-        imageView.image = UIImage(named: "centralpark-1")
+        if let image = cartoon.picture {
+            imageView.image = UIImage(named: image)
+        }
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let height = imageView.image!.size.height
         let width = imageView.image!.size.width
@@ -32,7 +44,7 @@ class CartoonCardViewController: UIViewController {
         
         label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Central Park"
+        label.text = cartoon.title
         label.font = UIFont.boldSystemFont(ofSize: 30)
         view.addSubview(label)
         
@@ -41,20 +53,22 @@ class CartoonCardViewController: UIViewController {
             l.translatesAutoresizingMaskIntoConstraints = false
             l.text = info
             l.font = UIFont.boldSystemFont(ofSize: 12)
+            l.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
             return l
         }
         infoLabels.forEach { view.addSubview($0) }
         infoLabels.forEach { constraints.append($0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25)) }
         infoLabels.enumerated().forEach { constraints.append($0.offset == 0 ? $0.element.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 25) : $0.element.topAnchor.constraint(equalTo: infoLabels[$0.offset - 1].bottomAnchor, constant: 10)) }
         
-        contentLabels = ["United States", "Sitcom, musical", "18", "May 29, 2020", "https://en.wikipedia.org/wiki/Central_Park_(TV_series)"
+        contentLabels = [cartoon.country, cartoon.genres.joined(separator: ", "), cartoon.numberOfEpisodes != nil ? String(cartoon.numberOfEpisodes!) : "TBA", cartoon.releaseDate != nil ? DateFormatter().string(from: cartoon.releaseDate!) : "TBA", cartoon.previewLink ?? ""
         ].map { content in
             let l = UILabel()
             l.translatesAutoresizingMaskIntoConstraints = false
             l.text = content
-            l.lineBreakMode = .byWordWrapping
+            l.lineBreakMode = .byCharWrapping
             l.numberOfLines = 0
             l.font = UIFont.systemFont(ofSize: 12)
+            l.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
             return l
         }
         contentLabels.forEach { view.addSubview($0) }
@@ -71,16 +85,5 @@ class CartoonCardViewController: UIViewController {
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 25)
         ] + constraints)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

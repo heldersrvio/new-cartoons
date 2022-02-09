@@ -16,6 +16,7 @@
 		9ACEA6B427B305E00053513A /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEA6B327B305E00053513A /* PageViewController.swift */; };
 		9ACEA6B627B30B320053513A /* CartoonCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEA6B527B30B320053513A /* CartoonCardViewController.swift */; };
 		9ACEA6B827B34CD00053513A /* CardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEA6B727B34CD00053513A /* CardContainerViewController.swift */; };
+		9ACEA6BA27B34E100053513A /* Cartoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACEA6B927B34E100053513A /* Cartoon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		9ACEA6B327B305E00053513A /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9ACEA6B527B30B320053513A /* CartoonCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartoonCardViewController.swift; sourceTree = "<group>"; };
 		9ACEA6B727B34CD00053513A /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
+		9ACEA6B927B34E100053513A /* Cartoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cartoon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				9ACEA6B327B305E00053513A /* PageViewController.swift */,
 				9ACEA6B727B34CD00053513A /* CardContainerViewController.swift */,
 				9ACEA6B527B30B320053513A /* CartoonCardViewController.swift */,
+				9ACEA6B927B34E100053513A /* Cartoon.swift */,
 				9ACEA6A527B3040E0053513A /* Main.storyboard */,
 				9ACEA6A827B304130053513A /* Assets.xcassets */,
 				9ACEA6AA27B304130053513A /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 			files = (
 				9ACEA6B827B34CD00053513A /* CardContainerViewController.swift in Sources */,
 				9ACEA6B627B30B320053513A /* CartoonCardViewController.swift in Sources */,
+				9ACEA6BA27B34E100053513A /* Cartoon.swift in Sources */,
 				9ACEA6A427B3040E0053513A /* ViewController.swift in Sources */,
 				9ACEA6A027B3040E0053513A /* AppDelegate.swift in Sources */,
 				9ACEA6A227B3040E0053513A /* SceneDelegate.swift in Sources */,
