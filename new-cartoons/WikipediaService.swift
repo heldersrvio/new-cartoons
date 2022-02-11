@@ -33,8 +33,16 @@ class WikipediaService {
     
     private func makeRequest(for url: URL) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
+            do {
+                guard let data = data else { return }
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
+                guard let parse = json["parse"] as? [String: Any], let text = parse["text"] as? String else { return }
+                let parser = WikipediaHTMLParser(html: text)
+                print(parser.getParsedWikipediaCartoons()!)
+                
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+            }
         }
         task.resume()
     }
