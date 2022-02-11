@@ -4,7 +4,6 @@
 //
 //  Created by Helder on 02/08/2022.
 //
-
 import UIKit
 
 class ViewController: UITabBarController, UIPageViewControllerDelegate {
@@ -12,6 +11,9 @@ class ViewController: UITabBarController, UIPageViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let wk = WikipediaService()
+        wk.getAnimatedSeriesList(for: 2022)
+        
         pageViewController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         pageViewController.delegate = self
         addChild(pageViewController)
